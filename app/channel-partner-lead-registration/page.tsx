@@ -19,10 +19,9 @@ export default function ChannelPartnerLeadPage() {
       <section className="channel channelTop">
         <div className="wrap channelGrid">
           <div>
-            <p className="eyebrow">Channel Partner</p>
-            <h2>Become a Channel Partner Lead?</h2>
+            <h2>Become a channel partner lead?</h2>
             <p className="sectionLead light">
-              Please Enter your Lead Information below to Register.
+              Please enter your lead information below to register.
             </p>
           </div>
           {sent ? (
@@ -33,29 +32,29 @@ export default function ChannelPartnerLeadPage() {
             </div>
           ) : (
             <form className="channelForm" onSubmit={onSubmit}>
-              <h4>Lead Registration</h4>
+              <h4>Lead registration</h4>
               <div className="channelFormGrid">
                 <label>
                   Sponsor ID
                   <input name="sponsorId" placeholder="Sponsor ID" required />
                 </label>
                 <label>
-                  Customer Name
-                  <input name="customerName" placeholder="Customer Name" required />
+                  Customer name
+                  <input name="customerName" placeholder="Customer name" required />
                 </label>
                 <label>
-                  Customer Phone Number
-                  <input name="customerPhone" type="tel" placeholder="Customer Phone Number" required />
+                  Customer phone number
+                  <input name="customerPhone" type="tel" placeholder="Customer phone number" required />
                 </label>
                 <label>
                   Email
                   <input name="email" type="email" placeholder="Email" />
                 </label>
                 <label className="channelFull">
-                  Project Interest In
+                  Project interested in
                   <select name="project" defaultValue="" required>
                     <option value="" disabled>
-                      Project Interested In
+                      Project interested in
                     </option>
                     {CHANNEL.leadProjects.map((p) => (
                       <option key={p} value={p}>

@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Minus, Plus } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import { COMPANY, FAQS, MD, MEDIA } from '../data';
 
@@ -16,14 +17,12 @@ export default function AboutPage() {
     >
       <section className="intro wrap">
         <div>
-          <p className="eyebrow dark">Our Strength</p>
+          <p className="eyebrow dark">Our strength</p>
           <p className="introLead">{COMPANY.about}</p>
         </div>
         <div className="introCopy">
           <img className="familyCutout" src={MEDIA.family} alt="PNJ family" />
-          <a href="#md">
-            Know more about PNJ Projects
-          </a>
+          <a href="#md">Know more about PNJ Projects</a>
         </div>
         <div className="introImg">
           <img src={MEDIA.about} alt="PNJ Projects" />
@@ -38,11 +37,11 @@ export default function AboutPage() {
           <div className="mdIdentity">
             <h3>{MD.name}</h3>
             <span className="mdLine" />
-            <p>Managing Director</p>
+            <p>Managing director</p>
           </div>
         </div>
         <div className="mdCopy">
-          <p className="eyebrow dark">MD Message</p>
+          <p className="eyebrow dark">MD message</p>
           <h2>{COMPANY.mdHeading}</h2>
           <blockquote>“{MD.quote}”</blockquote>
           <p className="mdWelcome">{MD.welcome}</p>
@@ -52,31 +51,46 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="faq wrap">
-        <div>
-          <p className="eyebrow dark">Know more about PNJ Projects</p>
-          <h2>Know more about PNJ Projects</h2>
-          <p className="sectionLead">{COMPANY.about}</p>
-          <h3 className="faqSub">{COMPANY.mdHeading}</h3>
-          <p className="sectionLead">
-            <strong>PNJ Projects</strong>
-            <br />
-            {COMPANY.landmark}
-          </p>
+      <section className="faqSection wrap">
+        <div className="faqSectionHead">
+          <h2>FAQ</h2>
         </div>
-        <div className="faqList">
-          {FAQS.map((item, i) => (
-            <button
-              key={item.q}
-              type="button"
-              className={`faqItem ${openFaq === i ? 'open' : ''}`}
-              onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
-            >
-              <span>{item.q}</span>
-              <ChevronDown size={18} />
-              {openFaq === i && <p>{item.a}</p>}
-            </button>
-          ))}
+
+        <div className="faqPillList">
+          {FAQS.map((item, i) => {
+            const open = openFaq === i;
+            const q = item.q.replace(/^\d+\.\s*/, '');
+            return (
+              <div key={item.q} className={`faqPill ${open ? 'open' : ''}`}>
+                <button
+                  type="button"
+                  className="faqPillHead"
+                  onClick={() => setOpenFaq(open ? -1 : i)}
+                  aria-expanded={open}
+                >
+                  <span>{q}</span>
+                  <span className="faqPillIcon" aria-hidden>
+                    {open ? <Minus size={16} strokeWidth={2.5} /> : <Plus size={16} strokeWidth={2.5} />}
+                  </span>
+                </button>
+                <AnimatePresence initial={false}>
+                  {open ? (
+                    <motion.div
+                      className="faqPillPanel"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <div className="faqPillBody">
+                        <p>{item.a}</p>
+                      </div>
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </section>
     </PageShell>

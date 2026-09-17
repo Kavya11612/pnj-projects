@@ -2,13 +2,24 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { ArrowUpRight, MapPin } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import SiteHeader from '../components/SiteHeader';
 import SiteFooter from '../components/SiteFooter';
-import { ONGOING_HOME, PROJECT_DETAILS, PROJECT_TABS } from '../projects-data';
+import FeaturedProjectCard from '../components/FeaturedProjectCard';
+import { getFeaturedCard, ONGOING_HOME, PROJECT_DETAILS, PROJECT_TABS } from '../projects-data';
+
+const STATUS_FILTERS = ['All', 'Ongoing', 'Newly launched', 'Pre-launch', 'Sold out'] as const;
 
 export default function ProjectsPage() {
   const [tab, setTab] = useState<(typeof PROJECT_TABS)[number] | 'All'>('All');
+  const [status, setStatus] = useState<(typeof STATUS_FILTERS)[number]>('All');
+
+  const featured = useMemo(() => {
+    const cards = ONGOING_HOME.map(getFeaturedCard);
+    if (status === 'All') return cards;
+    return cards.filter((p) => p.status === status);
+  }, [status]);
+
   const listed = useMemo(() => {
     if (tab === 'All') return PROJECT_DETAILS;
     return PROJECT_DETAILS.filter((p) => p.type === tab);
@@ -19,8 +30,7 @@ export default function ProjectsPage() {
       <SiteHeader active="projects" />
       <section className="projectsPageHero">
         <div className="wrap">
-          <p className="eyebrow">Projects</p>
-          <h1>Ongoing Projects</h1>
+          <h1>Ongoing projects</h1>
           <p>
             Explore PNJ Projects across villas, apartments, layouts and more — the same project lineup as our main website.
           </p>
@@ -30,29 +40,24 @@ export default function ProjectsPage() {
       <section className="wrap projectsPageFeatured">
         <div className="sectionHead projectsHead">
           <div>
-            <p className="eyebrow">Featured</p>
-            <h2>Homepage Highlights</h2>
+            <h2>Featured projects</h2>
           </div>
-          <Link className="goldBtn" href="/#contact">
+          <Link className="goldBtn" href="/contact">
             Book a site visit <ArrowUpRight size={16} />
           </Link>
         </div>
-        <div className="ongoingStrip">
-          {ONGOING_HOME.map((item) => (
-            <Link key={item.slug} className="ongoingCard" href={`/projects/${item.slug}`}>
-              <img src={item.image} alt={item.name} decoding="async" />
-              <div className="ongoingShade" />
-              <div className="ongoingBody">
-                <small>{item.type}</small>
-                <h3>{item.name}</h3>
-                <span>
-                  <MapPin size={12} /> {item.location}
-                </span>
-              </div>
-              <span className="ongoingGo" aria-hidden>
-                <ArrowUpRight size={16} />
-              </span>
-            </Link>
+
+        <div className="featFilters">
+          {STATUS_FILTERS.map((s) => (
+            <button key={s} type="button" className={status === s ? 'on' : ''} onClick={() => setStatus(s)}>
+              {s}
+            </button>
+          ))}
+        </div>
+
+        <div className="featGrid">
+          {featured.map((item) => (
+            <FeaturedProjectCard key={item.slug} project={item} />
           ))}
         </div>
       </section>
@@ -60,7 +65,6 @@ export default function ProjectsPage() {
       <section className="wrap projectsPageList">
         <div className="sectionHead projectsHead">
           <div>
-            <p className="eyebrow">All Projects</p>
             <h2>Browse by category</h2>
           </div>
           <div className="filters">
@@ -75,26 +79,9 @@ export default function ProjectsPage() {
           </div>
         </div>
 
-        <div className="projectRail">
-          {listed.map((p, i) => (
-            <Link className="project" key={p.slug} href={`/projects/${p.slug}`}>
-              <div className="projectImg">
-                <img src={p.image} alt={p.name} decoding="async" />
-                <div className="projectShade" />
-                <span className="projectNum">{String(i + 1).padStart(2, '0')}</span>
-                <span className="projectTag">{p.soldOut ? 'Sold Out' : p.type}</span>
-                <div className="projectOverlay">
-                  <small>{p.type}</small>
-                  <h3>{p.name}</h3>
-                  <span>
-                    <MapPin size={12} /> {p.location}
-                  </span>
-                </div>
-                <span className="projectGo" aria-hidden>
-                  <ArrowUpRight size={16} />
-                </span>
-              </div>
-            </Link>
+        <div className="featGrid">
+          {listed.map((p) => (
+            <FeaturedProjectCard key={p.slug} project={p} />
           ))}
         </div>
       </section>

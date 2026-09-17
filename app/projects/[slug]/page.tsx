@@ -29,11 +29,11 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
           <div className="actions">
             {project.brochure ? (
               <a className="goldBtn" href={project.brochure} target="_blank" rel="noreferrer">
-                Download Brochure <Download size={16} />
+                Download brochure <Download size={16} />
               </a>
             ) : null}
             <a className="goldBtn" href="/contact">
-              Request Site Visit <ArrowUpRight size={16} />
+              Request site visit <ArrowUpRight size={16} />
             </a>
           </div>
         </div>
@@ -41,7 +41,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
 
       <section className="wrap projectOverview">
         <div>
-          <p className="eyebrow dark">Project Overview</p>
+          <p className="eyebrow dark">Project overview</p>
           <h2>About {project.name}</h2>
           <p>{project.overview}</p>
           {project.stats?.length ? (
@@ -56,7 +56,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
           ) : null}
           {project.brochure ? (
             <a className="goldBtn" href={project.brochure} target="_blank" rel="noreferrer" style={{ marginTop: 28 }}>
-              Download Brochure <Download size={16} />
+              Download brochure <Download size={16} />
             </a>
           ) : null}
         </div>
@@ -76,7 +76,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
       {project.highlights.length ? (
         <section className="projectHighlights">
           <div className="wrap">
-            <p className="eyebrow">Project Highlights</p>
+            <p className="eyebrow">Project highlights</p>
             <h2>Amenities & features</h2>
             <ul className="highlightGrid">
               {project.highlights.map((h) => (
@@ -89,7 +89,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
 
       {project.layoutImage ? (
         <section className="wrap projectLayout">
-          <p className="eyebrow dark">Project Layout</p>
+          <p className="eyebrow dark">Project layout</p>
           <h2>Site / master plan</h2>
           <div className="layoutFrame">
             <img src={project.layoutImage} alt={`${project.name} layout`} />
@@ -99,7 +99,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
 
       {project.locationHighlights?.length ? (
         <section className="wrap projectLocBlocks">
-          <p className="eyebrow dark">Location Highlights</p>
+          <p className="eyebrow dark">Location highlights</p>
           <h2>Connectivity & neighbourhood</h2>
           <div className="locGrid">
             {project.locationHighlights.map((block) => (
@@ -118,7 +118,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
 
       {project.mapEmbed ? (
         <section className="wrap projectMap">
-          <p className="eyebrow dark">Project PIN Location</p>
+          <p className="eyebrow dark">Project PIN location</p>
           <h2>Find us on the map</h2>
           <div className="mapFrame">
             <iframe title={`${project.name} map`} src={project.mapEmbed} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />

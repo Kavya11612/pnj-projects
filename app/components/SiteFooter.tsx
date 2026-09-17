@@ -92,7 +92,7 @@ export default function SiteFooter() {
               <br />
               <Link href="/careers">Careers</Link>
               <br />
-              <Link href="/fractional">Fractional Investment</Link>
+              <Link href="/fractional">Fractional investment</Link>
               <br />
               <Link href="/contact">Contact</Link>
               <br />

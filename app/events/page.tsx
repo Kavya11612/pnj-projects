@@ -14,11 +14,27 @@ function EventsContent() {
   const initial = EVENTS.some((e) => e.slug === tabParam) ? tabParam! : EVENTS[0].slug;
   const [active, setActive] = useState(initial);
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(9);
   const current = useMemo(() => EVENTS.find((e) => e.slug === active) ?? EVENTS[0], [active]);
 
   useEffect(() => {
     if (tabParam && EVENTS.some((e) => e.slug === tabParam)) setActive(tabParam);
   }, [tabParam]);
+
+  useEffect(() => {
+    setVisibleCount(9);
+  }, [active]);
+
+  // Prefetch next batch in background
+  useEffect(() => {
+    current.images.slice(0, Math.min(visibleCount + 6, current.images.length)).forEach((src) => {
+      const img = new window.Image();
+      img.decoding = 'async';
+      img.src = src;
+    });
+  }, [current, visibleCount]);
+
+  const shown = current.images.slice(0, visibleCount);
 
   return (
     <>
@@ -50,18 +66,39 @@ function EventsContent() {
           </div>
 
           <div className="eventGallery">
-            {current.images.map((src) => (
-              <button key={src} type="button" className="eventGalleryItem" onClick={() => setLightbox(src)}>
-                <img src={src} alt={current.title} loading="lazy" decoding="async" />
+            {shown.map((src, i) => (
+              <button
+                key={src}
+                type="button"
+                className="eventGalleryItem"
+                onClick={() => setLightbox(current.fullImages[i] || src)}
+              >
+                <img
+                  src={src}
+                  alt={current.title}
+                  loading={i < 6 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  fetchPriority={i < 3 ? 'high' : 'auto'}
+                />
               </button>
             ))}
           </div>
+
+          {visibleCount < current.images.length ? (
+            <button
+              type="button"
+              className="eventLoadMore"
+              onClick={() => setVisibleCount((n) => n + 12)}
+            >
+              Load more photos
+            </button>
+          ) : null}
         </div>
       </section>
 
       {lightbox ? (
         <div className="eventLightbox" onClick={() => setLightbox(null)} role="dialog" aria-modal>
-          <img src={lightbox} alt="" onClick={(e) => e.stopPropagation()} />
+          <img src={lightbox} alt="" onClick={(e) => e.stopPropagation()} decoding="async" />
           <button type="button" className="eventLightboxClose" onClick={() => setLightbox(null)}>
             Close
           </button>
@@ -77,7 +114,6 @@ export default function EventsPage() {
       <SiteHeader />
       <section className="eventsPageHero">
         <div className="wrap">
-          <p className="eyebrow">Events</p>
           <h1>Events</h1>
           <p>Moments from PNJ Projects — celebrations, awards, festivals and milestones.</p>
         </div>

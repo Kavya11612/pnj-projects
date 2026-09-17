@@ -19,10 +19,9 @@ export default function ChannelPartnerPage() {
       <section className="channel channelTop">
         <div className="wrap channelGrid">
           <div>
-            <p className="eyebrow">Channel Partner</p>
             <h2>{CHANNEL.title}</h2>
             <p className="sectionLead light">{CHANNEL.body}</p>
-            <p className="channelHint">Please Fill and Submit the Channel Registration Form</p>
+            <p className="channelHint">Please fill and submit the channel registration form</p>
             <p className="channelAddress">
               <MapPin size={16} /> {COMPANY.address}
             </p>
@@ -35,30 +34,36 @@ export default function ChannelPartnerPage() {
             </div>
           ) : (
             <form className="channelForm" onSubmit={onPartnerSubmit}>
-              <h4>Channel Registration Form</h4>
+              <h4>Channel registration form</h4>
               <div className="channelFormGrid">
                 <label>
-                  Name
+                  <span className="fieldLabel">
+                    Name <span className="reqStar">*</span>
+                  </span>
                   <input name="name" placeholder="Name" required />
                 </label>
                 <label>
-                  Email
+                  <span className="fieldLabel">Email</span>
                   <input name="email" type="email" placeholder="Email" required />
                 </label>
                 <label>
-                  Phone
+                  <span className="fieldLabel">
+                    Phone <span className="reqStar">*</span>
+                  </span>
                   <input name="phone" type="tel" placeholder="Phone" required />
                 </label>
                 <label>
-                  Company Name
-                  <input name="company" placeholder="Company Name" />
+                  <span className="fieldLabel">
+                    Company name <span className="reqStar">*</span>
+                  </span>
+                  <input name="company" placeholder="Company name" required />
                 </label>
                 <label className="channelFull">
-                  Registered Address
-                  <input name="address" placeholder="Registered Address" required />
+                  <span className="fieldLabel">Registered address</span>
+                  <input name="address" placeholder="Registered address" required />
                 </label>
                 <label>
-                  Referred by
+                  <span className="fieldLabel">Referred by</span>
                   <select name="referredBy" defaultValue="">
                     <option value="" disabled>
                       Referred by
@@ -71,18 +76,18 @@ export default function ChannelPartnerPage() {
                   </select>
                 </label>
                 <label>
-                  Aadhar Number
-                  <input name="aadhar" type="number" placeholder="Aadhar Number" />
+                  <span className="fieldLabel">Aadhar number</span>
+                  <input name="aadhar" type="number" placeholder="Aadhar number" />
                 </label>
                 <label>
-                  PAN Number
-                  <input name="pan" placeholder="PAN Number" />
+                  <span className="fieldLabel">PAN number</span>
+                  <input name="pan" placeholder="PAN number" />
                 </label>
                 <label>
-                  Type of Business
+                  <span className="fieldLabel">Type of business</span>
                   <select name="businessType" defaultValue="" required>
                     <option value="" disabled>
-                      Type of Business
+                      Type of business
                     </option>
                     {CHANNEL.businessTypes.map((type) => (
                       <option key={type} value={type}>
@@ -92,7 +97,7 @@ export default function ChannelPartnerPage() {
                   </select>
                 </label>
                 <label>
-                  RERA
+                  <span className="fieldLabel">RERA</span>
                   <input name="rera" placeholder="RERA" />
                 </label>
               </div>

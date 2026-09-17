@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, CalendarDays, X } from 'lucide-react';
-import { FormEvent, useEffect, useRef, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { APPROACH, COMPANY, MEDIA, SITE_VISIT_PROJECTS } from './data';
 import { EVENTS } from './events-data';
@@ -19,11 +19,6 @@ const fade = {
 export default function Home() {
   const [enquiryOpen, setEnquiryOpen] = useState(false);
   const [enquirySent, setEnquirySent] = useState(false);
-  const heroRef = useRef<HTMLElement>(null);
-  const mediaRef = useRef<HTMLDivElement>(null);
-  const target = useRef({ x: 0, y: 0 });
-  const current = useRef({ x: 0, y: 0 });
-  const rafRef = useRef(0);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setEnquiryOpen(true), 1200);
@@ -36,42 +31,6 @@ export default function Home() {
       document.body.style.overflow = '';
     };
   }, [enquiryOpen]);
-
-  useEffect(() => {
-    const hero = heroRef.current;
-    const media = mediaRef.current;
-    if (!hero || !media) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const strength = 18;
-    const onMove = (e: MouseEvent) => {
-      const rect = hero.getBoundingClientRect();
-      const inside =
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom &&
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right;
-      if (!inside) {
-        target.current = { x: 0, y: 0 };
-        return;
-      }
-      const nx = (e.clientX - rect.left) / rect.width - 0.5;
-      const ny = (e.clientY - rect.top) / rect.height - 0.5;
-      target.current = { x: nx * strength, y: ny * strength };
-    };
-    const tick = () => {
-      current.current.x += (target.current.x - current.current.x) * 0.08;
-      current.current.y += (target.current.y - current.current.y) * 0.08;
-      media.style.transform = `translate3d(${current.current.x}px, ${current.current.y}px, 0)`;
-      rafRef.current = requestAnimationFrame(tick);
-    };
-    window.addEventListener('mousemove', onMove, { passive: true });
-    rafRef.current = requestAnimationFrame(tick);
-    return () => {
-      window.removeEventListener('mousemove', onMove);
-      cancelAnimationFrame(rafRef.current);
-    };
-  }, []);
 
   const onEnquirySubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -158,36 +117,46 @@ export default function Home() {
 
       <SiteHeader active="home" />
 
-      <section id="top" className="hero" ref={heroRef}>
-        <div className="heroMedia" ref={mediaRef}>
-          <picture>
-            <source srcSet="/pnj-media/hero-home.webp?v=9" type="image/webp" />
-            <img src="/pnj-media/hero-home.jpg?v=9" alt="PNJ Projects" decoding="async" fetchPriority="high" />
-          </picture>
-        </div>
-        <div className="heroShade" />
-        <div className="heroContent">
-          <p className="heroEyebrow">PNJ Projects</p>
-          <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85 }}>
-            Build Your Future
-            <span>With PNJ Projects</span>
-          </motion.h1>
-          <motion.p className="heroText" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
-            {COMPANY.heroCopy}
-          </motion.p>
-          <div className="actions">
-            <Link className="goldBtn" href="/projects">
-              Ongoing Projects <ArrowUpRight size={16} />
-            </Link>
-            <Link className="lineBtn" href="/contact">
-              Book a site visit <CalendarDays size={15} />
-            </Link>
+      <section id="top" className="hero">
+        <div className="heroInner wrap">
+          <div className="heroContent">
+            <p className="heroEyebrow">PNJ PROJECTS</p>
+            <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85 }}>
+              BUILD YOUR FUTURE
+              <span>WITH PNJ PROJECTS</span>
+            </motion.h1>
+            <motion.p className="heroText" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+              {COMPANY.heroCopy}
+            </motion.p>
+            <div className="actions">
+              <Link className="goldBtn" href="/projects">
+                Ongoing projects <ArrowUpRight size={16} />
+              </Link>
+              <Link className="lineBtn" href="/contact">
+                Book a site visit <CalendarDays size={15} />
+              </Link>
+            </div>
+            <div className="heroMeta">
+              <a href={COMPANY.phoneHref}>{COMPANY.phone}</a>
+              <MailLink email={COMPANY.email}>{COMPANY.email}</MailLink>
+              <span>Hyderabad</span>
+            </div>
           </div>
-        </div>
-        <div className="heroMeta">
-          <a href={COMPANY.phoneHref}>{COMPANY.phone}</a>
-          <MailLink email={COMPANY.email}>{COMPANY.email}</MailLink>
-          <span>Hyderabad</span>
+          <motion.div
+            className="heroVisual"
+            initial={{ opacity: 0, x: 36 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="heroVisualFrame">
+              <img
+                src="/home-hero.jpg"
+                alt="PNJ Projects residence"
+                decoding="async"
+                fetchPriority="high"
+              />
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -195,8 +164,8 @@ export default function Home() {
         <div>
           {Array.from({ length: 2 }).map((_, i) => (
             <p key={i}>
-              Layouts <i>/</i> Apartments <i>/</i> Villas <i>/</i> Fractional Investment <i>/</i> Channel Partners{' '}
-              <i>/</i> Interiors <i>/</i> Finserv <i>/</i>
+              Layouts <span>/</span> Apartments <span>/</span> Villas <span>/</span> Fractional investment <span>/</span> Channel partners{' '}
+              <span>/</span> Interiors <span>/</span> Finserv <span>/</span>
             </p>
           ))}
         </div>
@@ -204,7 +173,7 @@ export default function Home() {
 
       <section className="intro wrap">
         <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
-          <p className="eyebrow dark">Our Strength</p>
+          <p className="eyebrow dark">Our strength</p>
           <p className="introLead">{COMPANY.about}</p>
         </motion.div>
         <motion.div className="introCopy" variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
@@ -221,7 +190,7 @@ export default function Home() {
       <section className="values">
         <div className="wrap">
           <div className="approachHead">
-            <p className="eyebrow">Our Approach</p>
+            <p className="eyebrow">Our approach</p>
             <h2>Building more than properties.</h2>
             <span className="approachRule" aria-hidden />
           </div>
@@ -237,8 +206,8 @@ export default function Home() {
         <div className="wrap">
           <motion.div className="sectionHead projectsHead" variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <div>
-              <p className="eyebrow">Our Projects</p>
-              <h2>Ongoing Projects</h2>
+              <p className="eyebrow">Our projects</p>
+              <h2>Ongoing projects</h2>
             </div>
             <Link className="goldBtn" href="/projects">
               View all projects <ArrowUpRight size={16} />
@@ -254,7 +223,7 @@ export default function Home() {
         <div className="wrap">
           <p className="eyebrow">Property types</p>
           <h2 className="typesTitle">
-            Layouts, apartments & <em>villas.</em>
+            Layouts, apartments & <span>villas.</span>
           </h2>
           <div className="typeList">
             {[
@@ -278,7 +247,6 @@ export default function Home() {
         <div className="wrap">
           <div className="sectionHead projectsHead">
             <div>
-              <p className="eyebrow">Events</p>
               <h2>Events</h2>
             </div>
             <Link className="goldBtn" href="/events">

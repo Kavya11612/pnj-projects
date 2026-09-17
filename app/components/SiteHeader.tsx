@@ -58,8 +58,8 @@ export default function SiteHeader({ active }: { active?: Active }) {
           </Link>
           <div className="navDropMenu">
             <Link href="/about">About PNJ</Link>
-            <Link href="/about#md">MD Message</Link>
-            <Link href="/contact">Contact Us</Link>
+            <Link href="/about#md">MD message</Link>
+            <Link href="/contact">Contact us</Link>
           </div>
         </div>
         <div className="navDrop">
@@ -67,7 +67,7 @@ export default function SiteHeader({ active }: { active?: Active }) {
             Projects <ChevronDown size={14} />
           </Link>
           <div className="navDropMenu">
-            <Link href="/projects">Ongoing Projects</Link>
+            <Link href="/projects">Ongoing projects</Link>
             <Link href="/projects">Layouts</Link>
             <Link href="/projects">Apartments</Link>
             <Link href="/projects">Villas</Link>
@@ -75,11 +75,11 @@ export default function SiteHeader({ active }: { active?: Active }) {
         </div>
         <div className="navDrop">
           <Link href="/channel-partner" className={is('channel')}>
-            Channel Partner <ChevronDown size={14} />
+            Channel partner <ChevronDown size={14} />
           </Link>
           <div className="navDropMenu">
-            <Link href="/channel-partner">Channel Partner Registration</Link>
-            <Link href="/channel-partner-lead-registration">Channel Partner Lead Registration</Link>
+            <Link href="/channel-partner">Channel partner registration</Link>
+            <Link href="/channel-partner-lead-registration">Channel partner lead registration</Link>
           </div>
         </div>
         <Link href="/events" className={is('events')}>
@@ -90,7 +90,7 @@ export default function SiteHeader({ active }: { active?: Active }) {
         </Link>
         <div className="navDrop">
           <span className="navDropTrigger">
-            Other Services <ChevronDown size={14} />
+            Other services <ChevronDown size={14} />
           </span>
           <div className="navDropMenu">
             <a href="https://pnjinteriors.com/" target="_blank" rel="noopener noreferrer">
@@ -102,7 +102,7 @@ export default function SiteHeader({ active }: { active?: Active }) {
           </div>
         </div>
         <Link href="/fractional" className={is('fractional')}>
-          Fractional Investment
+          Fractional investment
         </Link>
         <Link href="/contact" className={is('contact')}>
           Contact
@@ -120,9 +120,9 @@ export default function SiteHeader({ active }: { active?: Active }) {
               ['/projects', 'Projects'],
               ['/events', 'Events'],
               ['/careers', 'Careers'],
-              ['/channel-partner', 'Channel Partner Registration'],
-              ['/channel-partner-lead-registration', 'Channel Partner Lead Registration'],
-              ['/fractional', 'Fractional Investment'],
+              ['/channel-partner', 'Channel partner registration'],
+              ['/channel-partner-lead-registration', 'Channel partner lead registration'],
+              ['/fractional', 'Fractional investment'],
               ['/contact', 'Contact'],
             ].map(([href, label]) => (
               <Link key={href} href={href} onClick={close}>

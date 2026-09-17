@@ -23,7 +23,7 @@ export default function PageShell({
       {!hideHero && title ? (
         <section className="pageHero">
           <div className="wrap">
-            <p className="eyebrow">PNJ Projects</p>
+            {!/pnj projects/i.test(title) ? <p className="eyebrow">PNJ Projects</p> : null}
             <h1>{title}</h1>
             {lead ? <p className="pageHeroLead">{lead}</p> : null}
           </div>

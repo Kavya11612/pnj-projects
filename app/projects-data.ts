@@ -6,7 +6,7 @@ const pnj = (path: string) => `https://pnjprojects.com${path}`;
 export type ProjectDetail = {
   slug: string;
   name: string;
-  type: Category | 'Farm Lands' | 'DTCP - RERA';
+  type: Category | 'Farm lands' | 'DTCP - RERA';
   location: string;
   image: string;
   summary: string;
@@ -18,6 +18,11 @@ export type ProjectDetail = {
   highlights: string[];
   locationHighlights?: { title: string; items: string[] }[];
   stats?: { label: string; value: string }[];
+  tagline?: string;
+  status?: 'Ongoing' | 'Sold out' | 'Pre-launch' | 'Newly launched';
+  config?: string;
+  area?: string;
+  price?: string;
 };
 
 const mapQ = (q: string, z = 12) =>
@@ -40,7 +45,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     highlights: ['Entrance Lobby', 'Club House', 'Indoor Games', 'Outdoor Games', 'Modern Amenities', 'Lift Lobby'],
     stats: [
       { label: 'Type', value: 'Apartments' },
-      { label: 'Status', value: 'Sold Out' },
+      { label: 'Status', value: 'Sold out' },
     ],
   },
   {
@@ -206,7 +211,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         ],
       },
       {
-        title: 'Health Care',
+        title: 'Health care',
         items: ['Medinova Super Specialty – 05 Min', 'Pragnya Super Specialty Hospital – 10 Min'],
       },
     ],
@@ -366,7 +371,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
   {
     slug: 'utopia',
     name: 'UTOPIA',
-    type: 'Farm Lands',
+    type: 'Farm lands',
     location: 'Kadthal, Hyderabad',
     image: media('plot-06.jpg'),
     summary: 'Premium development across 17 acres with plots from 120 to 180 sq. yds.',
@@ -407,7 +412,74 @@ export const ONGOING_HOME = [
   'pnj-kotas',
 ].map((slug) => PROJECT_DETAILS.find((p) => p.slug === slug)!);
 
-export const PROJECT_TABS = ['Villas', 'Apartments', 'Layouts', 'Farm Lands', 'DTCP - RERA'] as const;
+const CARD_META: Record<
+  string,
+  { tagline: string; status: NonNullable<ProjectDetail['status']>; config: string; area: string; price: string }
+> = {
+  'cyber-woods': {
+    tagline: 'IT Corridor Living',
+    status: 'Sold out',
+    config: 'Apartments',
+    area: 'Premium units',
+    price: 'Sold out',
+  },
+  marvella: {
+    tagline: 'Skyline Residences',
+    status: 'Ongoing',
+    config: '2–4 BHK',
+    area: '1,385–3,570 sqft',
+    price: 'On request',
+  },
+  'pnj-beams-and-columns': {
+    tagline: 'Urban Apartments',
+    status: 'Ongoing',
+    config: 'Apartments',
+    area: 'Suchitra',
+    price: 'On request',
+  },
+  'dukes-western-county': {
+    tagline: 'Premium Township',
+    status: 'Ongoing',
+    config: 'Plots',
+    area: 'Open plots',
+    price: 'On request',
+  },
+  'pnj-candeur-twins': {
+    tagline: 'Twin Tower Living',
+    status: 'Newly launched',
+    config: 'Apartments',
+    area: 'Premium',
+    price: 'On request',
+  },
+  'pnj-high9': {
+    tagline: 'High-Rise Living',
+    status: 'Ongoing',
+    config: 'Apartments',
+    area: 'High-rise',
+    price: 'On request',
+  },
+  'pnj-kotas': {
+    tagline: 'Plotted Community',
+    status: 'Ongoing',
+    config: 'Layouts',
+    area: 'Open plots',
+    price: 'On request',
+  },
+};
+
+export function getFeaturedCard(p: ProjectDetail) {
+  const meta = CARD_META[p.slug];
+  return {
+    ...p,
+    tagline: p.tagline || meta?.tagline || p.type,
+    status: p.status || meta?.status || (p.soldOut ? 'Sold out' : 'Ongoing'),
+    config: p.config || meta?.config || p.type,
+    area: p.area || meta?.area || p.location,
+    price: p.price || meta?.price || 'On request',
+  };
+}
+
+export const PROJECT_TABS = ['Villas', 'Apartments', 'Layouts', 'Farm lands', 'DTCP - RERA'] as const;
 
 export function getProject(slug: string) {
   return PROJECT_DETAILS.find((p) => p.slug === slug);

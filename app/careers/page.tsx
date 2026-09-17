@@ -10,18 +10,18 @@ export default function CareersPage() {
     <PageShell
       active="careers"
       title="Careers"
-      lead="Work with a pioneer. PNJ PROJECTS is an emerging player in the Real Estate Industry with strong parentage."
+      lead="Work with a pioneer. PNJ Projects is an emerging player in the real estate industry with strong parentage."
     >
       <section className="careers wrap">
         <div className="sectionHead">
           <div>
             <p className="eyebrow dark">Join us</p>
             <h2>
-              Work with a <em>pioneer.</em>
+              Work with a <span>pioneer.</span>
             </h2>
             <p className="sectionLead">
               Interested? Mail your resume to{' '}
-              <MailLink email={COMPANY.hrEmail} subject="Job Application - PNJ Projects">
+              <MailLink email={COMPANY.hrEmail} subject="Job application - PNJ Projects">
                 {COMPANY.hrEmail}
               </MailLink>
             </p>

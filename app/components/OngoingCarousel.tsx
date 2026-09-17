@@ -20,8 +20,18 @@ export default function OngoingCarousel() {
     return () => window.clearInterval(id);
   }, [paused, total]);
 
-  const prev = () => setIndex((i) => (i - 1 + total) % total);
-  const next = () => setIndex((i) => (i + 1) % total);
+  useEffect(() => {
+    const next = ONGOING_HOME[(index + 1) % total];
+    const prev = ONGOING_HOME[(index - 1 + total) % total];
+    [next, prev].forEach((p) => {
+      if (!p?.image) return;
+      const img = new window.Image();
+      img.src = p.image;
+    });
+  }, [index, total]);
+
+  const goPrev = () => setIndex((i) => (i - 1 + total) % total);
+  const goNext = () => setIndex((i) => (i + 1) % total);
 
   return (
     <div
@@ -40,7 +50,14 @@ export default function OngoingCarousel() {
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
             <Link href={`/projects/${item.slug}`} className="ongoingSlideLink">
-              <img src={item.image} alt={item.name} decoding="async" />
+              <img
+                src={item.image}
+                alt={item.name}
+                decoding="async"
+                fetchPriority="high"
+                width={1180}
+                height={420}
+              />
               <div className="ongoingShade" />
               <div className="ongoingBody">
                 <small>{item.type}</small>
@@ -54,10 +71,10 @@ export default function OngoingCarousel() {
           </motion.div>
         </AnimatePresence>
 
-        <button type="button" className="ongoingNav prev" onClick={prev} aria-label="Previous project">
+        <button type="button" className="ongoingNav prev" onClick={goPrev} aria-label="Previous project">
           <ArrowLeft size={18} />
         </button>
-        <button type="button" className="ongoingNav next" onClick={next} aria-label="Next project">
+        <button type="button" className="ongoingNav next" onClick={goNext} aria-label="Next project">
           <ArrowRight size={18} />
         </button>
       </div>
@@ -84,7 +101,7 @@ export default function OngoingCarousel() {
             className={`ongoingThumb ${i === index ? 'on' : ''}`}
             onClick={() => setIndex(i)}
           >
-            <img src={p.image} alt="" />
+            <img src={p.image} alt="" loading="lazy" decoding="async" width={160} height={72} />
             <span>{p.name}</span>
           </button>
         ))}

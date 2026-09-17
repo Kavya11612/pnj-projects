@@ -1,19 +1,19 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Poppins, Quicksand } from 'next/font/google';
+import { Montserrat, Playfair_Display } from 'next/font/google';
 
-/* Same fonts as https://pnjprojects.com/ — Poppins body, Quicksand headings */
-const sans = Poppins({
+const sans = Montserrat({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  style: ['normal'],
   variable: '--font-sans',
   display: 'swap',
 });
 
-const display = Quicksand({
+const display = Playfair_Display({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal'],
   variable: '--font-display',
   display: 'swap',
 });
@@ -27,6 +27,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://wsrv.nl" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://pnjprojects.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://wsrv.nl" />
+        <link rel="dns-prefetch" href="https://pnjprojects.com" />
+      </head>
       <body className={`${display.variable} ${sans.variable}`}>{children}</body>
     </html>
   );

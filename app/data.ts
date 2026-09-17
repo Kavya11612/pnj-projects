@@ -38,14 +38,14 @@ export const COMPANY = {
   },
   address:
     '3rd Floor, Santoshi Arcade, Plot No: 167, Kavuri Hills, Madhapur, Hyderabad, Telangana 500081',
-  tagline: 'Build Your Future With PNJ Projects',
+  tagline: 'BUILD YOUR FUTURE WITH PNJ PROJECTS',
   heroCopy:
     'From apartments to villas to open plots – PNJ Projects offers trusted real estate solutions for every dream and investment.',
   about:
     'PNJ Projects is a distinguished player in the real estate industry, renowned for its commitment to excellence. With a track record spanning over two decades, PNJ Projects has consistently delivered innovative and high-quality residential and commercial spaces.',
-  landmark: 'A Landmark Name in Real Estate, Delivering Exceptional Lifestyle Experiences.',
+  landmark: 'A landmark name in real estate, delivering exceptional lifestyle experiences.',
   knowMoreTitle: 'Know more about PNJ Projects',
-  mdHeading: 'Guiding Projects and Clients with 5+ Years of Industry Insight',
+  mdHeading: 'Guiding projects and clients with 5+ years of industry insight',
   footerLegal: 'Copyrighted © 2025 Reserved by PNJ Projects',
   companyLegal: 'PNJ Projects Private Limited',
 };
@@ -53,19 +53,19 @@ export const COMPANY = {
 export const APPROACH = [
   {
     n: '01',
-    t: 'VISION',
+    t: 'Vision',
     d: 'We imagine spaces that inspire everyday living.',
     image: media('Entrance_day_02-min-1.jpg'),
   },
   {
     n: '02',
-    t: 'VALUE',
+    t: 'Value',
     d: 'We create lasting value for every investment.',
     image: media('Exterior_Cam_16-min-1.jpg'),
   },
   {
     n: '03',
-    t: 'LIVING',
+    t: 'Living',
     d: 'We shape better lives through thoughtful homes.',
     image: media('slide1-1.jpg'),
   },
@@ -145,7 +145,7 @@ export const FAQS = [
 
 export const MD = {
   name: 'AVV Pavan Kumar',
-  title: 'Managing Director',
+  title: 'Managing director',
   quote: 'Nothing is impossible with hard work, sincerity and dedication.',
   welcome: 'We extend a warm welcome to all our clients, investors, and business partners!',
   paragraphs: [
@@ -159,8 +159,8 @@ export const MD = {
 export const CAREERS = [
   {
     role: 'Sales Manager',
-    dept: 'Sales Department',
-    exp: '3 – 4 Years',
+    dept: 'Sales department',
+    exp: '3 – 4 years',
     summary:
       'The candidate should be a Graduate /MBA with 3 years’ experience in Direct Sales of living Plots, Apartments, Villa as a Manager',
     points: [
@@ -178,8 +178,8 @@ export const CAREERS = [
   },
   {
     role: 'Sales Executive',
-    dept: 'Sales Department',
-    exp: '1 – 2 Years',
+    dept: 'Sales department',
+    exp: '1 – 2 years',
     summary:
       'The candidate should have with 2 years’ experience in Direct Sales of living Plots, Apartments, Villa as a Executive',
     points: [
@@ -194,8 +194,8 @@ export const CAREERS = [
   },
   {
     role: 'Telecaller',
-    dept: 'Sales Department',
-    exp: '0 – 1 Years',
+    dept: 'Sales department',
+    exp: '0 – 1 years',
     summary: 'Outbound Calling: Initiate outbound calls to potential real estate clients, effectively communicating property offerings and services.',
     points: [
       'Lead Qualification: Proactively qualify leads through strategic questioning, ensuring accurate data collection on potential clients’ preferences and requirements.',
@@ -207,7 +207,7 @@ export const CAREERS = [
 ];
 
 export const CHANNEL = {
-  title: 'PARTNER WITH US FOR ATTRACTIVE RETURNS',
+  title: 'Partner with us for attractive returns',
   body: 'We, at PNJ Projects, work closely with our network of Channel Partners to create a smarter, more connected business community. With access to our large portfolio of award-winning enterprise-class products and services, our Channel Partners deliver, implement, support, and enhance our offerings through their industry expertise and proven sales and technical knowledge.',
   referredBy: [
     'ANITHA',
@@ -228,7 +228,7 @@ export const CHANNEL = {
     'PAVAN KUMAR (MD)',
     'OTHERS',
   ],
-  businessTypes: ['Public Limited', 'Individual'],
+  businessTypes: ['Public limited', 'Individual'],
   leadProjects: [
     'PNJ GALAXY',
     'PNJ SOLITAIRE UNITY',
@@ -297,7 +297,7 @@ export const FRACTIONAL = {
     'Quarterly Updates of the Registered Property will be provided to all shareholders.',
     'Top 2 Investors in the SPV will be the directors of the company',
   ],
-  propertyTypes: ['LANDS (HMDA / DTCP / AGRCULTURE)', 'COMMERCIAL PROPERTIES.', 'VILLAS.', 'APARTMENTS'],
+  propertyTypes: ['Lands (HMDA / DTCP / agriculture)', 'Commercial properties.', 'Villas.', 'Apartments'],
   returns: [
     'Monthly Dividend of 1% will be paid to Investors on 10th of Every Quarter.',
     '4 PDC’s of the Dividend will be provided in advance for the respective year.',
