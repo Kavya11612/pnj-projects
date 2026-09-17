@@ -727,6 +727,21 @@ h2 {
   font-weight: 300;
   line-height: 1.6;
 }
+.channelHint {
+  margin: 22px 0 0;
+  color: rgba(255,255,255,0.78);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.channelFormGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+}
+.channelFormGrid .channelFull {
+  grid-column: 1 / -1;
+}
 .channelForm, .darkThanks {
   background: #fff;
   color: var(--ink);
@@ -1752,6 +1767,7 @@ footer {
   .mdBlock, .faq, .channelGrid, .serviceCard, .careerGrid, .fracGrid, .serviceRow, .valueGrid.three, .fracSplit {
     grid-template-columns: 1fr;
   }
+  .channelFormGrid { grid-template-columns: 1fr; }
   .fracVisual, .fracVisual img { min-height: 280px; }
   .fracHighlightRow { grid-template-columns: 1fr; }
   .valueGrid.three .value { border-right: 0; padding: 36px 0 28px; border-bottom: 1px solid rgba(255,255,255,0.1); }

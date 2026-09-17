@@ -73,9 +73,15 @@ export default function SiteHeader({ active }: { active?: Active }) {
             <Link href="/projects">Villas</Link>
           </div>
         </div>
-        <Link href="/channel-partner" className={is('channel')}>
-          Channel Partner
-        </Link>
+        <div className="navDrop">
+          <Link href="/channel-partner" className={is('channel')}>
+            Channel Partner <ChevronDown size={14} />
+          </Link>
+          <div className="navDropMenu">
+            <Link href="/channel-partner">Channel Partner Registration</Link>
+            <Link href="/channel-partner-lead-registration">Channel Partner Lead Registration</Link>
+          </div>
+        </div>
         <Link href="/events" className={is('events')}>
           Events
         </Link>
@@ -114,7 +120,8 @@ export default function SiteHeader({ active }: { active?: Active }) {
               ['/projects', 'Projects'],
               ['/events', 'Events'],
               ['/careers', 'Careers'],
-              ['/channel-partner', 'Channel Partner'],
+              ['/channel-partner', 'Channel Partner Registration'],
+              ['/channel-partner-lead-registration', 'Channel Partner Lead Registration'],
               ['/fractional', 'Fractional Investment'],
               ['/contact', 'Contact'],
             ].map(([href, label]) => (

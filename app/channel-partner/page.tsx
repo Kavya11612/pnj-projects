@@ -3,7 +3,7 @@
 import { FormEvent, useState } from 'react';
 import { ArrowUpRight, MapPin } from 'lucide-react';
 import PageShell from '../components/PageShell';
-import { CHANNEL, COMPANY, SITE_VISIT_PROJECTS } from '../data';
+import { CHANNEL, COMPANY } from '../data';
 
 export default function ChannelPartnerPage() {
   const [partnerSent, setPartnerSent] = useState(false);
@@ -20,6 +20,7 @@ export default function ChannelPartnerPage() {
             <p className="eyebrow">Channel Partner</p>
             <h2>{CHANNEL.title}</h2>
             <p className="sectionLead light">{CHANNEL.body}</p>
+            <p className="channelHint">Please Fill and Submit the Channel Registration Form</p>
             <p className="channelAddress">
               <MapPin size={16} /> {COMPANY.address}
             </p>
@@ -32,31 +33,67 @@ export default function ChannelPartnerPage() {
             </div>
           ) : (
             <form className="channelForm" onSubmit={onPartnerSubmit}>
-              <h4>Channel / Lead Registration</h4>
-              <label>
-                Full name
-                <input name="name" required />
-              </label>
-              <label>
-                Phone
-                <input name="phone" required />
-              </label>
-              <label>
-                Email
-                <input name="email" type="email" required />
-              </label>
-              <label>
-                Project interest
-                <select name="project" defaultValue={SITE_VISIT_PROJECTS[0]}>
-                  {SITE_VISIT_PROJECTS.map((p) => (
-                    <option key={p}>{p}</option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                Message / Sponsor ID
-                <input name="note" placeholder="Optional" />
-              </label>
+              <h4>Channel Registration Form</h4>
+              <div className="channelFormGrid">
+                <label>
+                  Name
+                  <input name="name" placeholder="Name" required />
+                </label>
+                <label>
+                  Email
+                  <input name="email" type="email" placeholder="Email" required />
+                </label>
+                <label>
+                  Phone
+                  <input name="phone" type="tel" placeholder="Phone" required />
+                </label>
+                <label>
+                  Company Name
+                  <input name="company" placeholder="Company Name" />
+                </label>
+                <label className="channelFull">
+                  Registered Address
+                  <input name="address" placeholder="Registered Address" required />
+                </label>
+                <label>
+                  Referred by
+                  <select name="referredBy" defaultValue="">
+                    <option value="" disabled>
+                      Referred by
+                    </option>
+                    {CHANNEL.referredBy.map((name) => (
+                      <option key={name} value={name}>
+                        {name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  Aadhar Number
+                  <input name="aadhar" type="number" placeholder="Aadhar Number" />
+                </label>
+                <label>
+                  PAN Number
+                  <input name="pan" placeholder="PAN Number" />
+                </label>
+                <label>
+                  Type of Business
+                  <select name="businessType" defaultValue="" required>
+                    <option value="" disabled>
+                      Type of Business
+                    </option>
+                    {CHANNEL.businessTypes.map((type) => (
+                      <option key={type} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  RERA
+                  <input name="rera" placeholder="RERA" />
+                </label>
+              </div>
               <button type="submit">
                 Submit registration <ArrowUpRight size={16} />
               </button>
