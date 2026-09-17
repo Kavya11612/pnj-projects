@@ -1443,7 +1443,24 @@ h2 {
   gap: 48px;
   align-items: start;
 }
-.contact h2 { font-size: clamp(48px, 6vw, 84px); }
+.contact h2 {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(40px, 5.2vw, 64px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.contact h2 em {
+  display: inline;
+  font-style: italic;
+  font-weight: 600;
+  background: var(--brand-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 .contactLead {
   margin: 22px 0 0;
   max-width: 440px;
@@ -1784,7 +1801,7 @@ footer {
   .story { height: 520px; }
   .contact form { grid-template-columns: 1fr; padding: 28px 22px; }
   .footerGrid { grid-template-columns: 1fr; gap: 32px; }
-  .contact h2 { font-size: 56px; }
+  .contact h2 { font-size: 38px; }
   .enquiryModal { grid-template-columns: 1fr; max-height: min(92vh, 720px); overflow: auto; }
   .enquiryVisual { min-height: 220px; }
   .ongoingStrip { margin-bottom: 0; }
@@ -2229,6 +2246,9 @@ footer {
   font: inherit;
 }
 .innerPage { min-height: 100vh; background: #fff; }
+.innerPage.noPageHero .channelTop {
+  padding-top: 120px;
+}
 .pageHero {
   padding: 130px 0 48px;
   background: #0b0b0b;

@@ -2,7 +2,8 @@
 
 import { FormEvent, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import PageShell from '../components/PageShell';
+import SiteHeader from '../components/SiteHeader';
+import SiteFooter from '../components/SiteFooter';
 import { CHANNEL } from '../data';
 
 export default function ChannelPartnerLeadPage() {
@@ -13,12 +14,9 @@ export default function ChannelPartnerLeadPage() {
   };
 
   return (
-    <PageShell
-      active="channel"
-      title="Channel Partner Lead Registration"
-      lead="Become a Channel Partner Lead? Please Enter your Lead Information below to Register."
-    >
-      <section className="channel">
+    <main className="innerPage noPageHero">
+      <SiteHeader active="channel" />
+      <section className="channel channelTop">
         <div className="wrap channelGrid">
           <div>
             <p className="eyebrow">Channel Partner</p>
@@ -87,6 +85,7 @@ export default function ChannelPartnerLeadPage() {
           )}
         </div>
       </section>
-    </PageShell>
+      <SiteFooter />
+    </main>
   );
 }

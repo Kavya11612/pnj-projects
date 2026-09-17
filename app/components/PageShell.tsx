@@ -9,22 +9,26 @@ export default function PageShell({
   active,
   title,
   lead,
+  hideHero,
 }: {
   children: ReactNode;
   active?: Parameters<typeof SiteHeader>[0]['active'];
-  title: string;
+  title?: string;
   lead?: string;
+  hideHero?: boolean;
 }) {
   return (
-    <main className="innerPage">
+    <main className={`innerPage${hideHero ? ' noPageHero' : ''}`}>
       <SiteHeader active={active} />
-      <section className="pageHero">
-        <div className="wrap">
-          <p className="eyebrow">PNJ Projects</p>
-          <h1>{title}</h1>
-          {lead ? <p className="pageHeroLead">{lead}</p> : null}
-        </div>
-      </section>
+      {!hideHero && title ? (
+        <section className="pageHero">
+          <div className="wrap">
+            <p className="eyebrow">PNJ Projects</p>
+            <h1>{title}</h1>
+            {lead ? <p className="pageHeroLead">{lead}</p> : null}
+          </div>
+        </section>
+      ) : null}
       {children}
       <SiteFooter />
     </main>
