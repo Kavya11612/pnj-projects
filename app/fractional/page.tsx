@@ -273,7 +273,7 @@ export default function FractionalPage() {
           </svg>
           <div>
             <h2>Build wealth through real estate.</h2>
-            <p>Join PNJ Projects and be a part of our growth story.</p>
+            <p>Join Pnj Projects and be a part of our growth story.</p>
           </div>
           <Link className="fracCta" href="/contact">
             Explore investment <ArrowUpRight size={16} />

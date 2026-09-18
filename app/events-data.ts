@@ -22,7 +22,7 @@ export const EVENTS: EventItem[] = [
   {
     slug: 'independence-day',
     title: 'Independence Day',
-    note: '78th Independence Day Celebrations @ PNJ Office (15-08-2024)',
+    note: '78th Independence Day Celebrations @ Pnj Office (15-08-2024)',
     date: '15-08-2024',
     cover: fastImg('2024/08/IMG20240815122503-scaled.jpg', 800),
     images: [
@@ -46,8 +46,8 @@ export const EVENTS: EventItem[] = [
   },
   {
     slug: 'excellence-award-ceremony',
-    title: 'PNJ Excellence Award Ceremony',
-    note: 'Excellence Awards Ceremony @ PNJ Office (15-08-2026)',
+    title: 'Pnj Excellence Award Ceremony',
+    note: 'Excellence Awards Ceremony @ Pnj Office (15-08-2026)',
     date: '15-08-2026',
     cover: fastImg('2026/08/WhatsApp-Image-2026-08-27-at-3.27.59-PM.jpeg', 800),
     images: [
@@ -90,7 +90,7 @@ export const EVENTS: EventItem[] = [
   {
     slug: 'ganesh-chaturthi',
     title: 'Ganesh Chaturthi',
-    note: 'Ganesh Chaturthi Celebrations @ PNJ Office (07-09-2024)',
+    note: 'Ganesh Chaturthi Celebrations @ Pnj Office (07-09-2024)',
     date: '07-09-2024',
     cover: fastImg('2024/09/IMG_1461-scaled.jpg', 800),
     images: [
@@ -127,7 +127,7 @@ export const EVENTS: EventItem[] = [
   {
     slug: 'ugadi-festival-2024',
     title: 'Ugadi Festival 2024',
-    note: 'PNJ Projects ugadi festival 2024 (08-04-2024)',
+    note: 'Pnj Projects ugadi festival 2024 (08-04-2024)',
     date: '08-04-2024',
     cover: fastImg('2024/12/ugadi.jpg', 800),
     images: [
@@ -150,7 +150,7 @@ export const EVENTS: EventItem[] = [
   {
     slug: 'leadership-summit',
     title: 'Leadership Summit',
-    note: 'Active PNJ Leadership Summit @ ( 06/12/2024)',
+    note: 'Active Pnj Leadership Summit @ ( 06/12/2024)',
     date: '06/12/2024',
     cover: fastImg('2024/12/summit-scaled.jpg', 800),
     images: [

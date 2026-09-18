@@ -10,7 +10,7 @@ type Props = {
 };
 
 /** Opens mail app on mobile; Gmail compose on desktop (works without Outlook). */
-export default function MailLink({ email, children, className, subject = 'Enquiry - PNJ Projects' }: Props) {
+export default function MailLink({ email, children, className, subject = 'Enquiry - Pnj Projects' }: Props) {
   const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
   const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}`;
 

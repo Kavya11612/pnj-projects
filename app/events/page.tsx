@@ -39,7 +39,7 @@ function EventsContent() {
   return (
     <>
       <section className="wrap eventsPageBody">
-        <div className="eventTabs" role="tablist" aria-label="PNJ Events">
+        <div className="eventTabs" role="tablist" aria-label="Pnj Events">
           {EVENTS.map((ev) => (
             <button
               key={ev.slug}
@@ -57,7 +57,7 @@ function EventsContent() {
         <div className="eventPanel">
           <div className="eventPanelHead">
             <div>
-              <p className="eyebrow dark">{current.date || 'PNJ Projects'}</p>
+              <p className="eyebrow dark">{current.date || 'Pnj Projects'}</p>
               <h2>{current.note}</h2>
             </div>
             <Link className="goldBtn" href="/contact">
@@ -115,7 +115,7 @@ export default function EventsPage() {
       <section className="eventsPageHero">
         <div className="wrap">
           <h1>Events</h1>
-          <p>Moments from PNJ Projects — celebrations, awards, festivals and milestones.</p>
+          <p>Moments from Pnj Projects — celebrations, awards, festivals and milestones.</p>
         </div>
       </section>
       <Suspense fallback={<div className="wrap" style={{ padding: '40px 0', color: '#666' }}>Loading events…</div>}>

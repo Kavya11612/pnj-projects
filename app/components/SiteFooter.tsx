@@ -62,7 +62,7 @@ export default function SiteFooter() {
         <div className="wrap footerGrid">
           <div>
             <Link className="logo footerLogo" href="/">
-              <img src="/pnj-logo.png" alt="PNJ Projects" />
+              <img src="/pnj-logo.png" alt="Pnj Projects" />
             </Link>
             <p>{COMPANY.about}</p>
             <div className="footerSocials">
@@ -94,14 +94,16 @@ export default function SiteFooter() {
               <br />
               <Link href="/fractional">Fractional investment</Link>
               <br />
+              <Link href="/reviews">Reviews</Link>
+              <br />
               <Link href="/contact">Contact</Link>
               <br />
               <a href="https://pnjinteriors.com/" target="_blank" rel="noopener noreferrer">
-                PNJ Interiors
+                Pnj Interiors
               </a>
               <br />
               <a href="https://pnjfinserv.com/" target="_blank" rel="noopener noreferrer">
-                PNJ Finserv
+                Pnj Finserv
               </a>
             </p>
           </div>

@@ -19,9 +19,9 @@ const display = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'PNJ Projects — Residences, Villas & Land in Hyderabad',
+  title: 'Pnj Projects — Residences, Villas & Land in Hyderabad',
   description:
-    'PNJ Projects crafts villas, apartments and plotted communities in Hyderabad — considered real estate for families and long-term investors.',
+    'Pnj Projects crafts villas, apartments and plotted communities in Hyderabad — considered real estate for families and long-term investors.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

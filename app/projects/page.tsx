@@ -32,7 +32,7 @@ export default function ProjectsPage() {
         <div className="wrap">
           <h1>Ongoing projects</h1>
           <p>
-            Explore PNJ Projects across villas, apartments, layouts and more — the same project lineup as our main website.
+            Explore Pnj Projects across villas, apartments, layouts and more — the same project lineup as our main website.
           </p>
         </div>
       </section>

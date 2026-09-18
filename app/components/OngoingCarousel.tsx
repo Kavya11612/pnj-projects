@@ -1,109 +1,64 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
-import { ONGOING_HOME } from '../projects-data';
+import { motion } from 'framer-motion';
+import { MapPin } from 'lucide-react';
+import { getFeaturedCard, ONGOING_HOME } from '../projects-data';
+
+const cards = ONGOING_HOME.slice(0, 3).map(getFeaturedCard);
+
+function statusClass(status: string) {
+  if (status === 'Sold out') return 'sold';
+  if (status === 'Pre-launch') return 'pre';
+  if (status === 'Newly launched') return 'new';
+  return 'ongoing';
+}
 
 export default function OngoingCarousel() {
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const total = ONGOING_HOME.length;
-  const item = ONGOING_HOME[index];
-
-  useEffect(() => {
-    if (paused) return;
-    const id = window.setInterval(() => {
-      setIndex((i) => (i + 1) % total);
-    }, 4200);
-    return () => window.clearInterval(id);
-  }, [paused, total]);
-
-  useEffect(() => {
-    const next = ONGOING_HOME[(index + 1) % total];
-    const prev = ONGOING_HOME[(index - 1 + total) % total];
-    [next, prev].forEach((p) => {
-      if (!p?.image) return;
-      const img = new window.Image();
-      img.src = p.image;
-    });
-  }, [index, total]);
-
-  const goPrev = () => setIndex((i) => (i - 1 + total) % total);
-  const goNext = () => setIndex((i) => (i + 1) % total);
-
   return (
-    <div
-      className="ongoingCarousel"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <div className="ongoingStage">
-        <AnimatePresence mode="wait">
+    <div className="homeFeatStack">
+      <div className="homeFeatList">
+        {cards.map((p, i) => (
           <motion.div
-            key={item.slug}
-            className="ongoingSlide"
-            initial={{ opacity: 0, x: 80 }}
+            key={p.slug}
+            initial={{ opacity: 0, x: 140 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -80 }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.7,
+              delay: 0.25 + i * 0.22,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
-            <Link href={`/projects/${item.slug}`} className="ongoingSlideLink">
+            <Link className="homeFeatCard" href={`/projects/${p.slug}`}>
               <img
-                src={item.image}
-                alt={item.name}
+                src={p.image}
+                alt={p.name}
                 decoding="async"
-                fetchPriority="high"
-                width={1180}
-                height={420}
+                fetchPriority={i === 0 ? 'high' : 'low'}
               />
-              <div className="ongoingShade" />
-              <div className="ongoingBody">
-                <small>{item.type}</small>
-                <h3>{item.name}</h3>
-                <span>{item.location}</span>
+              <div className="homeFeatShade" />
+              <div className="homeFeatTop">
+                <span className={`homeFeatStatus ${statusClass(p.status)}`}>
+                  <span className="homeFeatDot" /> {p.status}
+                </span>
+                <span className="homeFeatLogo" aria-hidden>
+                  <img src="/pnj-logo.png" alt="" width={28} height={28} decoding="async" />
+                </span>
               </div>
-              <span className="ongoingGo" aria-hidden>
-                <ArrowUpRight size={18} />
-              </span>
+              <div className="homeFeatBody">
+                <h3>{p.name}</h3>
+                <p>
+                  <MapPin size={13} /> {p.location}
+                </p>
+                <div className="homeFeatMeta">
+                  <span>
+                    {p.config} · {p.area}
+                  </span>
+                  <strong>{p.price}</strong>
+                </div>
+              </div>
             </Link>
           </motion.div>
-        </AnimatePresence>
-
-        <button type="button" className="ongoingNav prev" onClick={goPrev} aria-label="Previous project">
-          <ArrowLeft size={18} />
-        </button>
-        <button type="button" className="ongoingNav next" onClick={goNext} aria-label="Next project">
-          <ArrowRight size={18} />
-        </button>
-      </div>
-
-      <div className="ongoingDots" role="tablist" aria-label="Ongoing projects">
-        {ONGOING_HOME.map((p, i) => (
-          <button
-            key={p.slug}
-            type="button"
-            role="tab"
-            aria-selected={i === index}
-            className={i === index ? 'on' : ''}
-            onClick={() => setIndex(i)}
-            aria-label={p.name}
-          />
-        ))}
-      </div>
-
-      <div className="ongoingThumbs">
-        {ONGOING_HOME.map((p, i) => (
-          <button
-            key={p.slug}
-            type="button"
-            className={`ongoingThumb ${i === index ? 'on' : ''}`}
-            onClick={() => setIndex(i)}
-          >
-            <img src={p.image} alt="" loading="lazy" decoding="async" width={160} height={72} />
-            <span>{p.name}</span>
-          </button>
         ))}
       </div>
     </div>

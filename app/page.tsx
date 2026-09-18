@@ -65,8 +65,7 @@ export default function Home() {
               <div className="enquiryVisual">
                 <img src={MEDIA.about} alt="" />
                 <div>
-                  <img className="enquiryBrand" src="/pnj-logo.png" alt="PNJ Projects" />
-                  <p>Schedule a site visit</p>
+                  <img className="enquiryBrand" src="/pnj-logo.png" alt="Pnj Projects" />
                   <h3 id="enquiry-title">Tell us what you are looking for.</h3>
                 </div>
               </div>
@@ -75,7 +74,7 @@ export default function Home() {
                   <div className="enquiryThanks">
                     <p className="eyebrow dark">Received</p>
                     <h4>Thank you. Our team will call you shortly.</h4>
-                    <p>A PNJ advisor typically responds within one working day.</p>
+                    <p>A Pnj advisor typically responds within one working day.</p>
                     <button type="button" className="goldBtn" onClick={() => setEnquiryOpen(false)}>
                       Continue browsing <ArrowUpRight size={16} />
                     </button>
@@ -105,7 +104,7 @@ export default function Home() {
                       </select>
                     </label>
                     <button type="submit">
-                      Submit enquiry <ArrowUpRight size={16} />
+                      Submit <ArrowUpRight size={16} />
                     </button>
                   </form>
                 )}
@@ -120,10 +119,10 @@ export default function Home() {
       <section id="top" className="hero">
         <div className="heroInner wrap">
           <div className="heroContent">
-            <p className="heroEyebrow">PNJ PROJECTS</p>
+            <p className="heroEyebrow">Pnj Projects</p>
             <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85 }}>
-              BUILD YOUR FUTURE
-              <span>WITH PNJ PROJECTS</span>
+              Build Your Future
+              <span>With Pnj Projects</span>
             </motion.h1>
             <motion.p className="heroText" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
               {COMPANY.heroCopy}
@@ -142,21 +141,9 @@ export default function Home() {
               <span>Hyderabad</span>
             </div>
           </div>
-          <motion.div
-            className="heroVisual"
-            initial={{ opacity: 0, x: 36 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="heroVisualFrame">
-              <img
-                src="/home-hero.jpg"
-                alt="PNJ Projects residence"
-                decoding="async"
-                fetchPriority="high"
-              />
-            </div>
-          </motion.div>
+          <div className="heroVisual">
+            <OngoingCarousel />
+          </div>
         </div>
       </section>
 
@@ -173,24 +160,22 @@ export default function Home() {
 
       <section className="intro wrap">
         <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
-          <p className="eyebrow dark">Our strength</p>
           <p className="introLead">{COMPANY.about}</p>
         </motion.div>
         <motion.div className="introCopy" variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
-          <img className="familyCutout" src={MEDIA.family} alt="PNJ family" />
+          <img className="familyCutout" src={MEDIA.family} alt="Pnj family" />
           <Link href="/about">
-            Know more about PNJ Projects <ArrowUpRight size={16} />
+            Know more about Pnj Projects <ArrowUpRight size={16} />
           </Link>
         </motion.div>
         <div className="introImg">
-          <img src={MEDIA.about} alt="PNJ Projects" />
+          <img src={MEDIA.about} alt="Pnj Projects" />
         </div>
       </section>
 
       <section className="values">
         <div className="wrap">
           <div className="approachHead">
-            <p className="eyebrow">Our approach</p>
             <h2>Building more than properties.</h2>
             <span className="approachRule" aria-hidden />
           </div>
@@ -202,29 +187,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="projects">
+      <section id="projects" className="types">
         <div className="wrap">
-          <motion.div className="sectionHead projectsHead" variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
-            <div>
-              <p className="eyebrow">Our projects</p>
-              <h2>Ongoing projects</h2>
-            </div>
+          <div className="sectionHead projectsHead">
+            <h2 className="typesTitle">
+              Layouts, apartments & <span>villas.</span>
+            </h2>
             <Link className="goldBtn" href="/projects">
               View all projects <ArrowUpRight size={16} />
             </Link>
-          </motion.div>
-          <div className="ongoingStrip">
-            <OngoingCarousel />
           </div>
-        </div>
-      </section>
-
-      <section className="types">
-        <div className="wrap">
-          <p className="eyebrow">Property types</p>
-          <h2 className="typesTitle">
-            Layouts, apartments & <span>villas.</span>
-          </h2>
           <div className="typeList">
             {[
               ['Villas', '/pnj-media/villa-02.jpg'],
@@ -233,7 +205,6 @@ export default function Home() {
               <Link className="type" href="/projects" key={t}>
                 <img src={img} alt={t} />
                 <div>
-                  <small>PNJ Projects</small>
                   <h3>{t}</h3>
                 </div>
                 <ArrowUpRight />
@@ -258,7 +229,7 @@ export default function Home() {
               <Link key={ev.slug} className="eventCard" href={`/events?tab=${ev.slug}`}>
                 <img src={ev.cover} alt={ev.title} loading="lazy" decoding="async" />
                 <div>
-                  <small>{ev.date || 'PNJ Events'}</small>
+                  <small>{ev.date || 'Pnj Events'}</small>
                   <h3>{ev.title}</h3>
                   <p>{ev.note}</p>
                 </div>
@@ -275,13 +246,13 @@ export default function Home() {
 
 function Value({ n, t, d, image }: { n: string; t: string; d: string; image: string }) {
   return (
-    <motion.div className="value" whileHover={{ y: -4 }}>
+    <div className="value">
       <span className="valueNum">{n}</span>
       <h3>{t}</h3>
       <div className="valueMedia">
         <img src={image} alt={t} decoding="async" />
       </div>
       <p>{d}</p>
-    </motion.div>
+    </div>
   );
 }

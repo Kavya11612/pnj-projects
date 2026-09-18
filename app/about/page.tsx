@@ -12,7 +12,7 @@ export default function AboutPage() {
   return (
     <PageShell
       active="about"
-      title="About PNJ Projects"
+      title="About Pnj Projects"
       lead="A distinguished player in real estate, delivering innovative residential and commercial spaces for over two decades."
     >
       <section className="intro wrap">
@@ -21,11 +21,11 @@ export default function AboutPage() {
           <p className="introLead">{COMPANY.about}</p>
         </div>
         <div className="introCopy">
-          <img className="familyCutout" src={MEDIA.family} alt="PNJ family" />
-          <a href="#md">Know more about PNJ Projects</a>
+          <img className="familyCutout" src={MEDIA.family} alt="Pnj family" />
+          <a href="#md">Know more about Pnj Projects</a>
         </div>
         <div className="introImg">
-          <img src={MEDIA.about} alt="PNJ Projects" />
+          <img src={MEDIA.about} alt="Pnj Projects" />
         </div>
       </section>
 

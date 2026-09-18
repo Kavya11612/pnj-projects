@@ -31,7 +31,7 @@ const mapQ = (q: string, z = 12) =>
 export const PROJECT_DETAILS: ProjectDetail[] = [
   {
     slug: 'cyber-woods',
-    name: 'PNJ Cyberwoods',
+    name: 'Pnj Cyberwoods',
     type: 'Apartments',
     location: 'Osman Nagar, Hyderabad',
     image: media('Exterior_Cam_16-min-1.jpg'),
@@ -57,7 +57,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     summary:
       'Spanning 4.5 acres with two 32-floor towers offering luxurious 2, 2.5, 3 and 4 BHK apartments.',
     overview:
-      'Greetings from PNJ Projects Marvella! We are excited to introduce our latest project, Marvella, located on the prestigious 100ft Road in Tellapur, Hyderabad. Spanning across 4.5 acres, Marvella features two sky-high towers, each with 32 floors, offering a variety of luxurious 2, 2.5, 3, and 4 BHK apartments. The clubhouse, spread over 42,000 SFT and spanning G+5 levels, provides an array of world-class amenities. Apartment sizes range from 1385 SFT for a 2BHK to 3570 SFT for a 4BHK, with units facing East, West, and North. Marvella’s impressive amenities include a children’s play area, swimming pool, cricket practice pitch, meditation, and yoga center, basketball court, cycling and jogging track, elders seating area, gymnasium and spa, dogs’ corner, tennis court, indoor games, and an amphitheater, ensuring a perfect blend of comfort, luxury, and convenience.',
+      'Greetings from Pnj Projects Marvella! We are excited to introduce our latest project, Marvella, located on the prestigious 100ft Road in Tellapur, Hyderabad. Spanning across 4.5 acres, Marvella features two sky-high towers, each with 32 floors, offering a variety of luxurious 2, 2.5, 3, and 4 BHK apartments. The clubhouse, spread over 42,000 SFT and spanning G+5 levels, provides an array of world-class amenities. Apartment sizes range from 1385 SFT for a 2BHK to 3570 SFT for a 4BHK, with units facing East, West, and North. Marvella’s impressive amenities include a children’s play area, swimming pool, cricket practice pitch, meditation, and yoga center, basketball court, cycling and jogging track, elders seating area, gymnasium and spa, dogs’ corner, tennis court, indoor games, and an amphitheater, ensuring a perfect blend of comfort, luxury, and convenience.',
     brochure: pnj('/wp-content/uploads/2024/06/MARVELLA-TELLAPUR.pdf'),
     mapEmbed: mapQ('Tellapur Hyderabad', 13),
     layoutImage: pnj('/wp-content/uploads/2024/06/1-Site-Plan_page-0001-scaled.jpg'),
@@ -80,13 +80,13 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
   },
   {
     slug: 'pnj-beams-and-columns',
-    name: 'PNJ Beams & Columns',
+    name: 'Pnj Beams & Columns',
     type: 'Apartments',
     location: 'Suchitra, Kompally',
     image: media('beamSlide1.jpg'),
     summary: 'Premium apartment living with fully loaded clubhouse and thoughtfully planned blocks.',
     overview:
-      'PNJ Beams & Columns offers premium homes surrounded by greenery, with carefully planned blocks and a fully loaded club house designed for modern family living.',
+      'Pnj Beams & Columns offers premium homes surrounded by greenery, with carefully planned blocks and a fully loaded club house designed for modern family living.',
     brochure: pnj('/wp-content/uploads/2025/10/BC-Brochure-Final-PDF.pdf'),
     mapEmbed: mapQ('Suchitra Kompally Hyderabad', 12),
     layoutImage: pnj('/wp-content/uploads/2024/09/1.jpg'),
@@ -120,13 +120,13 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
   },
   {
     slug: 'pnj-candeur-twins',
-    name: 'PNJ Candeur Twins',
+    name: 'Pnj Candeur Twins',
     type: 'Apartments',
     location: 'Miyapur Main Road, Hyderabad',
     image: media('pnjTwinslide.jpg'),
     summary: '47-storey hi-rise 3 BHK apartments with elevated city views on Miyapur Main Road.',
     overview:
-      'PNJ Candeur TWINS is home to a collection of Three bedroom apartments. Designed to take advantage of the elevated position, looking East and North towards the City and South over the ever-developing skyline, they offer some of the finest far-reaching views at TWINS. The 47 storied hi-rise apartments feature open plan layouts and generously sized balconies. Apartment Sizes: 3BHK Flats which have 1591sft -2059sft. Facing: East, West.',
+      'Pnj Candeur TWINS is home to a collection of Three bedroom apartments. Designed to take advantage of the elevated position, looking East and North towards the City and South over the ever-developing skyline, they offer some of the finest far-reaching views at TWINS. The 47 storied hi-rise apartments feature open plan layouts and generously sized balconies. Apartment Sizes: 3BHK Flats which have 1591sft -2059sft. Facing: East, West.',
     brochure: pnj('/wp-content/uploads/2025/09/PNJ-TWINS.pdf'),
     mapEmbed: mapQ('Candeur Twins', 10),
     layoutImage: pnj('/wp-content/uploads/2025/09/floorPlanTwins.jpg'),
@@ -161,7 +161,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
   },
   {
     slug: 'pnj-high9',
-    name: 'PNJ High 9',
+    name: 'Pnj High 9',
     type: 'Apartments',
     location: 'Hyderabad',
     image: media('high9-1.jpg'),
@@ -174,13 +174,13 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
   },
   {
     slug: 'pnj-kotas',
-    name: 'PNJ Kotas',
+    name: 'Pnj Kotas',
     type: 'Villas',
     location: 'Medchal, Hyderabad',
     image: media('kotas.jpg'),
     summary: 'Ready-to-move villa enclave across 10 acres with 113 meticulously crafted villas.',
     overview:
-      'Step into a world of luxury and tranquility at PNJ Kotas, an exclusive ready-to-move villa enclave spread across 10 acres in Medchal. Designed for those who seek elegance and convenience, this premium gated community offers a seamless blend of space, comfort, and nature. With just 113 meticulously crafted villas, each home is a masterpiece of design, ensuring privacy and exclusivity. Choose from spacious sizes ranging from 1500 to 3500 SFT, set on plot sizes from 120 to 340 sq. yards, giving you the flexibility to match your dream lifestyle.',
+      'Step into a world of luxury and tranquility at Pnj Kotas, an exclusive ready-to-move villa enclave spread across 10 acres in Medchal. Designed for those who seek elegance and convenience, this premium gated community offers a seamless blend of space, comfort, and nature. With just 113 meticulously crafted villas, each home is a masterpiece of design, ensuring privacy and exclusivity. Choose from spacious sizes ranging from 1500 to 3500 SFT, set on plot sizes from 120 to 340 sq. yards, giving you the flexibility to match your dream lifestyle.',
     brochure: pnj('/wp-content/uploads/2025/09/Kotas-Brochure.pdf'),
     mapEmbed: mapQ('Virginia City Medchal', 10),
     layoutImage: pnj('/wp-content/uploads/2025/02/master_plan.jpg'),
@@ -222,7 +222,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
   },
   {
     slug: 'pnj-velora',
-    name: 'PNJ Velora',
+    name: 'Pnj Velora',
     type: 'Villas',
     location: 'Tukkuguda near Srisailam Highway, Hyderabad',
     image: media('villa-01.jpg'),
@@ -234,7 +234,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
   },
   {
     slug: 'pnj-green-meadows',
-    name: 'PNJ Green Meadows',
+    name: 'Pnj Green Meadows',
     type: 'Villas',
     location: 'Isnapur (Exit – 3), Hyderabad',
     image: media('villa-02.jpg'),
@@ -246,7 +246,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
   },
   {
     slug: 'pnj-lotus',
-    name: 'PNJ Lotus',
+    name: 'Pnj Lotus',
     type: 'Villas',
     location: 'Bhanuru, Hyderabad',
     image: media('villa-03.jpg'),
@@ -317,13 +317,13 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
   },
   {
     slug: 'pnj-meadows',
-    name: 'PNJ Meadows',
+    name: 'Pnj Meadows',
     type: 'Layouts',
     location: 'Kothur near Bangalore Highway',
     image: media('plot-02.jpg'),
     summary: 'HMDA-approved plots across 7 acres with 109 plots from 130–270 sq. yards.',
     overview:
-      'Exceptional investment opportunity with PNJ Projects at PNJ MEADOWS, offering HMDA-approved plots in the prime location of Kothur, near Bangalore Highway. Spanning across 7 acres with 109 plots ranging from 130 to 270 square yards.',
+      'Exceptional investment opportunity with Pnj Projects at Pnj MEADOWS, offering HMDA-approved plots in the prime location of Kothur, near Bangalore Highway. Spanning across 7 acres with 109 plots ranging from 130 to 270 square yards.',
     mapEmbed: mapQ('Kothur Hyderabad', 12),
     highlights: ['HMDA Approved', '7 Acres', '109 Plots', 'Bangalore Highway Proximity'],
     stats: [
@@ -333,13 +333,13 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
   },
   {
     slug: 'pnj-signature',
-    name: 'PNJ Signature',
+    name: 'Pnj Signature',
     type: 'Layouts',
     location: 'Nandigama',
     image: media('plot-03.jpg'),
     summary: 'Eco-friendly villa plots strategically located in Nandigama.',
     overview:
-      'PNJ Projects invites you to explore our latest offering—PNJ Signature Eco-Friendly Villa Plots. Strategically located in Nandigama.',
+      'Pnj Projects invites you to explore our latest offering—Pnj Signature Eco-Friendly Villa Plots. Strategically located in Nandigama.',
     mapEmbed: mapQ('Nandigama Hyderabad', 11),
     highlights: ['Eco-Friendly Villa Plots', 'Strategic Location'],
   },

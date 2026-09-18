@@ -128,26 +128,26 @@ export default function ContactPage() {
       <section className="services wrap">
         <p className="eyebrow dark">Other services</p>
         <h2>
-          Part of the <span>PNJ group.</span>
+          Part of the <span>Pnj group.</span>
         </h2>
         <div className="serviceRow">
           <a href="https://pnjinteriors.com/" target="_blank" rel="noopener noreferrer" className="serviceCard">
-            <img src={MEDIA.about} alt="PNJ Interiors" />
+            <img src={MEDIA.about} alt="Pnj Interiors" />
             <div>
               <small>Other services</small>
-              <h3>PNJ Interiors</h3>
-              <p>PNJ Interiors</p>
+              <h3>Pnj Interiors</h3>
+              <p>Pnj Interiors</p>
               <span>
                 Visit pnjinteriors.com <ArrowUpRight size={15} />
               </span>
             </div>
           </a>
           <a href="https://pnjfinserv.com/" target="_blank" rel="noopener noreferrer" className="serviceCard">
-            <img src={MEDIA.exterior} alt="PNJ Finserv" />
+            <img src={MEDIA.exterior} alt="Pnj Finserv" />
             <div>
               <small>Other services</small>
-              <h3>PNJ Finserv</h3>
-              <p>PNJ Finserv</p>
+              <h3>Pnj Finserv</h3>
+              <p>Pnj Finserv</p>
               <span>
                 Visit pnjfinserv.com <ArrowUpRight size={15} />
               </span>
