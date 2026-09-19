@@ -141,9 +141,9 @@ export default function SiteHeader({ active }: { active?: Active }) {
           </Link>
           <div className="navDropMenu">
             <Link href="/projects">Ongoing projects</Link>
-            <Link href="/projects">Layouts</Link>
-            <Link href="/projects">Apartments</Link>
-            <Link href="/projects">Villas</Link>
+            <Link href="/projects?type=Layouts">Layouts</Link>
+            <Link href="/projects?type=Apartments">Apartments</Link>
+            <Link href="/projects?type=Villas">Villas</Link>
           </div>
         </div>
 
@@ -229,6 +229,9 @@ export default function SiteHeader({ active }: { active?: Active }) {
             ['/', 'Home'],
             ['/about', 'About'],
             ['/projects', 'Projects'],
+            ['/projects?type=Layouts', 'Layouts'],
+            ['/projects?type=Apartments', 'Apartments'],
+            ['/projects?type=Villas', 'Villas'],
             ['/events', 'Events'],
             ['/careers', 'Careers'],
             ['/channel-partner', 'Channel partner registration'],
@@ -238,7 +241,7 @@ export default function SiteHeader({ active }: { active?: Active }) {
             ['/contact', 'Contact'],
           ].map(([href, label]) => (
             <Link
-              key={href}
+              key={`${href}-${label}`}
               href={href}
               onClick={() => {
                 close();
