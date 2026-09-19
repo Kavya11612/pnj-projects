@@ -1,13 +1,12 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, CalendarDays, X } from 'lucide-react';
+import { ArrowUpRight, X } from 'lucide-react';
 import { FormEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { APPROACH, COMPANY, MEDIA, SITE_VISIT_PROJECTS } from './data';
 import { EVENTS } from './events-data';
-import OngoingCarousel from './components/OngoingCarousel';
-import MailLink from './components/MailLink';
+import HomeHero from './components/HomeHero';
 import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
 
@@ -39,6 +38,8 @@ export default function Home() {
 
   return (
     <main>
+      <SiteHeader active="home" />
+
       <AnimatePresence>
         {enquiryOpen && (
           <motion.div
@@ -114,38 +115,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <SiteHeader active="home" />
-
-      <section id="top" className="hero">
-        <div className="heroInner wrap">
-          <div className="heroContent">
-            <p className="heroEyebrow">Pnj Projects</p>
-            <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85 }}>
-              Build Your Future
-              <span>With Pnj Projects</span>
-            </motion.h1>
-            <motion.p className="heroText" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
-              {COMPANY.heroCopy}
-            </motion.p>
-            <div className="actions">
-              <Link className="goldBtn" href="/projects">
-                Ongoing projects <ArrowUpRight size={16} />
-              </Link>
-              <Link className="lineBtn" href="/contact">
-                Book a site visit <CalendarDays size={15} />
-              </Link>
-            </div>
-            <div className="heroMeta">
-              <a href={COMPANY.phoneHref}>{COMPANY.phone}</a>
-              <MailLink email={COMPANY.email}>{COMPANY.email}</MailLink>
-              <span>Hyderabad</span>
-            </div>
-          </div>
-          <div className="heroVisual">
-            <OngoingCarousel />
-          </div>
-        </div>
-      </section>
+      <HomeHero />
 
       <div className="ticker" aria-hidden>
         <div>

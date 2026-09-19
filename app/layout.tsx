@@ -1,18 +1,18 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Montserrat, Playfair_Display } from 'next/font/google';
+import { DM_Sans, Fraunces } from 'next/font/google';
 
-const sans = Montserrat({
+const sans = DM_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700'],
   style: ['normal'],
   variable: '--font-sans',
   display: 'swap',
 });
 
-const display = Playfair_Display({
+const display = Fraunces({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   style: ['normal'],
   variable: '--font-display',
   display: 'swap',

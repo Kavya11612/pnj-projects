@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { ArrowUpRight } from 'lucide-react';
 import SiteHeader from '../components/SiteHeader';
 import SiteFooter from '../components/SiteFooter';
@@ -10,9 +11,26 @@ import { getFeaturedCard, ONGOING_HOME, PROJECT_DETAILS, PROJECT_TABS } from '..
 
 const STATUS_FILTERS = ['All', 'Ongoing', 'Newly launched', 'Pre-launch', 'Sold out'] as const;
 
-export default function ProjectsPage() {
-  const [tab, setTab] = useState<(typeof PROJECT_TABS)[number] | 'All'>('All');
+function ProjectsContent() {
+  const searchParams = useSearchParams();
+  const typeParam = searchParams.get('type');
+  const qParam = searchParams.get('q')?.trim().toLowerCase() ?? '';
+
+  const initialTab =
+    typeParam && (PROJECT_TABS as readonly string[]).includes(typeParam)
+      ? (typeParam as (typeof PROJECT_TABS)[number])
+      : 'All';
+
+  const [tab, setTab] = useState<(typeof PROJECT_TABS)[number] | 'All'>(initialTab);
   const [status, setStatus] = useState<(typeof STATUS_FILTERS)[number]>('All');
+
+  useEffect(() => {
+    if (typeParam && (PROJECT_TABS as readonly string[]).includes(typeParam)) {
+      setTab(typeParam as (typeof PROJECT_TABS)[number]);
+    } else if (!typeParam) {
+      setTab('All');
+    }
+  }, [typeParam]);
 
   const featured = useMemo(() => {
     const cards = ONGOING_HOME.map(getFeaturedCard);
@@ -21,18 +39,27 @@ export default function ProjectsPage() {
   }, [status]);
 
   const listed = useMemo(() => {
-    if (tab === 'All') return PROJECT_DETAILS;
-    return PROJECT_DETAILS.filter((p) => p.type === tab);
-  }, [tab]);
+    let items = tab === 'All' ? PROJECT_DETAILS : PROJECT_DETAILS.filter((p) => p.type === tab);
+    if (qParam) {
+      items = items.filter(
+        (p) =>
+          p.name.toLowerCase().includes(qParam) ||
+          p.location?.toLowerCase().includes(qParam) ||
+          p.type.toLowerCase().includes(qParam) ||
+          p.tagline?.toLowerCase().includes(qParam)
+      );
+    }
+    return items;
+  }, [tab, qParam]);
 
   return (
-    <main className="projectsPage">
-      <SiteHeader active="projects" />
+    <>
       <section className="projectsPageHero">
         <div className="wrap">
           <h1>Ongoing projects</h1>
           <p>
-            Explore Pnj Projects across villas, apartments, layouts and more — the same project lineup as our main website.
+            Explore Pnj Projects across villas, apartments, layouts and more — the same project lineup as our main
+            website.
           </p>
         </div>
       </section>
@@ -85,6 +112,17 @@ export default function ProjectsPage() {
           ))}
         </div>
       </section>
+    </>
+  );
+}
+
+export default function ProjectsPage() {
+  return (
+    <main className="projectsPage">
+      <SiteHeader active="projects" />
+      <Suspense fallback={null}>
+        <ProjectsContent />
+      </Suspense>
       <SiteFooter />
     </main>
   );

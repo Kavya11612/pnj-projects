@@ -237,11 +237,24 @@ export default function SiteHeader({ active }: { active?: Active }) {
             ['/reviews', 'Reviews'],
             ['/contact', 'Contact'],
           ].map(([href, label]) => (
-            <Link key={href} href={href} onClick={close} prefetch>
+            <Link
+              key={href}
+              href={href}
+              onClick={() => {
+                close();
+                document.body.style.overflow = '';
+              }}
+              prefetch
+            >
               {label}
             </Link>
           ))}
-          <a href="https://pnjinteriors.com/" target="_blank" rel="noopener noreferrer" onClick={close}>
+          <a
+            href="https://pnjinteriors.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={close}
+          >
             Pnj Interiors
           </a>
           <a href="https://pnjfinserv.com/" target="_blank" rel="noopener noreferrer" onClick={close}>
