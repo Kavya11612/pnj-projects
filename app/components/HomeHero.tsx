@@ -5,7 +5,12 @@ import { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { MapPin, Search, X } from 'lucide-react';
 import { COMPANY } from '../data';
-import { getFeaturedCard, ONGOING_HOME } from '../projects-data';
+import {
+  findBestProjectMatch,
+  getFeaturedCard,
+  ONGOING_HOME,
+  resolveProjectType,
+} from '../projects-data';
 
 const TYPE_PILLS = ['All', 'Apartments', 'Villas', 'Layouts', 'Farm lands'] as const;
 
@@ -66,8 +71,32 @@ export default function HomeHero() {
 
   const goSearch = (e?: FormEvent) => {
     e?.preventDefault();
+    const q = query.trim();
+
+    // Typed a category (apartments / villas / flats…) → only that type
+    const typeFromQuery = resolveProjectType(q);
+    if (typeFromQuery) {
+      setActivePill(
+        (TYPE_PILLS as readonly string[]).includes(typeFromQuery)
+          ? (typeFromQuery as (typeof TYPE_PILLS)[number])
+          : 'All'
+      );
+      router.push(`/projects?type=${encodeURIComponent(typeFromQuery)}`);
+      return;
+    }
+
+    // Typed a project name → open that project page directly
+    if (q) {
+      const match = findBestProjectMatch(q);
+      if (match) {
+        router.push(`/projects/${match.slug}`);
+        return;
+      }
+    }
+
+    // Ambiguous name search, or pill + free text → filtered list only
     const params = new URLSearchParams();
-    if (query.trim()) params.set('q', query.trim());
+    if (q) params.set('q', q);
     if (activePill !== 'All') params.set('type', activePill);
     const qs = params.toString();
     router.push(qs ? `/projects?${qs}` : '/projects');

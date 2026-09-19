@@ -488,3 +488,57 @@ export function getProject(slug: string) {
 export function projectsByTab(tab: string) {
   return PROJECT_DETAILS.filter((p) => p.type === tab);
 }
+
+const TYPE_ALIASES: Record<string, (typeof PROJECT_TABS)[number]> = {
+  apartment: 'Apartments',
+  apartments: 'Apartments',
+  flat: 'Apartments',
+  flats: 'Apartments',
+  villa: 'Villas',
+  villas: 'Villas',
+  layout: 'Layouts',
+  layouts: 'Layouts',
+  'farm land': 'Farm lands',
+  'farm lands': 'Farm lands',
+  farmland: 'Farm lands',
+  farmlands: 'Farm lands',
+  dtcp: 'DTCP - RERA',
+  rera: 'DTCP - RERA',
+  'dtcp - rera': 'DTCP - RERA',
+  'dtcp rera': 'DTCP - RERA',
+};
+
+export function resolveProjectType(query: string): (typeof PROJECT_TABS)[number] | null {
+  const q = query.trim().toLowerCase();
+  if (!q) return null;
+  if ((PROJECT_TABS as readonly string[]).includes(query.trim())) {
+    return query.trim() as (typeof PROJECT_TABS)[number];
+  }
+  return TYPE_ALIASES[q] ?? null;
+}
+
+/** Best single project match for a search query, or null if ambiguous / none. */
+export function findBestProjectMatch(query: string): ProjectDetail | null {
+  const q = query.trim().toLowerCase();
+  if (!q || resolveProjectType(q)) return null;
+
+  const exact = PROJECT_DETAILS.find((p) => p.name.toLowerCase() === q);
+  if (exact) return exact;
+
+  const slugExact = PROJECT_DETAILS.find((p) => p.slug === q || p.slug.replace(/-/g, ' ') === q);
+  if (slugExact) return slugExact;
+
+  const matches = PROJECT_DETAILS.filter((p) => {
+    const name = p.name.toLowerCase();
+    const slug = p.slug.replace(/-/g, ' ');
+    return name.includes(q) || q.includes(name) || slug.includes(q);
+  });
+
+  if (matches.length === 1) return matches[0];
+
+  // Prefer shortest name that starts with the query (e.g. "pnj high" → High 9)
+  const starts = matches.filter((p) => p.name.toLowerCase().startsWith(q) || p.slug.replace(/-/g, ' ').startsWith(q));
+  if (starts.length === 1) return starts[0];
+
+  return null;
+}
