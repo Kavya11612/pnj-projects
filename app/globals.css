@@ -450,7 +450,7 @@ h2 span {
 .heroQsNum {
   color: var(--brand-red);
   font-family: var(--display);
-  font-size: 1.55rem;
+  font-size: 1.85rem;
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -458,10 +458,10 @@ h2 span {
 .heroQsLabel {
   color: var(--muted);
   font-family: var(--sans);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
 }
 .heroMarqueeTitle {
   display: flex;
@@ -2676,7 +2676,8 @@ footer {
     max-height: none;
     min-height: 0;
     padding-top: 96px;
-    overflow: visible;
+    overflow-x: clip;
+    overflow-y: visible;
   }
   .heroLeft {
     width: 100%;
@@ -2749,7 +2750,10 @@ footer {
     gap: 20px;
   }
   .heroQsNum {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+  }
+  .heroQsLabel {
+    font-size: 14px;
   }
   .heroContent { max-width: none; }
   .heroVisual {
@@ -2785,8 +2789,40 @@ footer {
   .valueGrid.three .value { border-right: 0; padding: 36px 0 28px; border-bottom: 1px solid rgba(255,255,255,0.1); }
   .valueGrid.three .value:last-child { border-bottom: 0; }
   .eventGrid { grid-template-columns: 1fr 1fr; }
+  .intro {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .introLead {
+    max-width: none;
+    width: 100%;
+    font-size: 16px;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .intro > div,
+  .intro > .introCopy {
+    opacity: 1 !important;
+    transform: none !important;
+    width: 100%;
+    min-width: 0;
+  }
+  .introCopy {
+    order: 2;
+  }
+  .introImg {
+    order: 3;
+    height: 280px;
+    width: 100%;
+  }
+  .familyCutout {
+    width: min(100%, 220px);
+  }
   .intro, .why, .projects, .cuPage { padding-top: 56px; padding-bottom: 56px; }
-  .introImg, .whyImage { height: 380px; }
+  .introImg, .whyImage { height: 280px; }
   .typeList, .projectRail {
     grid-template-columns: 1fr 1fr;
   }

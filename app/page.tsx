@@ -129,15 +129,15 @@ export default function Home() {
       </div>
 
       <section className="intro wrap">
-        <motion.div variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
+        <div>
           <p className="introLead">{COMPANY.about}</p>
-        </motion.div>
-        <motion.div className="introCopy" variants={fade} initial="hidden" whileInView="show" viewport={{ once: true }}>
+        </div>
+        <div className="introCopy">
           <img className="familyCutout" src={MEDIA.family} alt="Pnj family" />
           <Link href="/about">
             Know more about Pnj Projects <ArrowUpRight size={16} />
           </Link>
-        </motion.div>
+        </div>
         <div className="introImg">
           <img src={MEDIA.about} alt="Pnj Projects" />
         </div>
